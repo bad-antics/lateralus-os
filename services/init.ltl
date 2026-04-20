@@ -1,0 +1,92 @@
+// LateralusOS — PID 1 (Init Process)
+// Copyright (c) 2025 bad-antics. All rights reserved.
+
+import hal::serial
+import hal::cpu
+import drivers::vga
+import drivers::keyboard
+import drivers::mouse
+import drivers::sound
+import drivers::gpu
+import drivers::nvme
+import drivers::wifi
+import drivers::rtc
+import drivers::usb
+import drivers::pci
+import fs::vfs
+import fs::ext4
+import fs::tmpfs
+import fs::procfs
+import fs::devfs
+import services::syslog
+import services::user_manager
+import services::network_manager
+import services::audio
+import services::power
+import services::pkg_manager
+import services::display
+import gui::theme_engine
+import gui::notifications
+
+const INIT_VERSION = "1.0.0"
+const EDITION      = "daily_driver"
+
+pub fn start() {
+    serial::log("[init] LateralusOS init {INIT_VERSION} — {EDITION} edition")
+
+    // Phase 1: Logging
+    syslog::start()
+    syslog::log("init", "Boot phase 1: logging")
+
+    // Phase 2: Filesystems
+    syslog::log("init", "Boot phase 2: filesystems")
+    vfs::init()
+    tmpfs::mount("/tmp")
+    tmpfs::mount("/run")
+    procfs::mount()
+    devfs::mount()
+    if nvme::is_present() {
+        ext4::mount("/dev/nvme0n1", "/")
+        ext4::mount("/dev/nvme0n1p2", "/home")
+        ext4::mount("/dev/nvme0n1p3", "/var")
+    }
+    syslog::log("init", "Filesystems mounted")
+
+    // Phase 3: System services
+    syslog::log("init", "Boot phase 3: system services")
+    user_manager::init()
+    power::init()
+    pkg_manager::init()
+    syslog::log("init", "Core services started")
+
+    // Phase 4: Hardware
+    syslog::log("init", "Boot phase 4: hardware")
+    let dt = rtc::now()
+    syslog::log("init", "System time: {rtc::format_iso(dt)}")
+    usb::init()
+    mouse::init()
+    sound::init()
+    syslog::log("init", "Hardware initialized")
+
+    // Phase 5: Network
+    syslog::log("init", "Boot phase 5: network")
+    network_manager::start()
+    syslog::log("init", "Network: {network_manager::get_state_str()} ip={ip_str()}")
+
+    // Phase 6: Audio daemon (background)
+    syslog::log("init", "Boot phase 6: audio")
+    spawn(fn() { audio::start() })
+
+    // Phase 7: GUI
+    syslog::log("init", "Boot phase 7: display server")
+    theme_engine::set_theme("catppuccin-mocha")
+    vga::println("LateralusOS ready")
+    display::start()    // This runs the main GUI event loop
+}
+
+fn ip_str() -> str {
+    let ip = network_manager::get_ip()
+    if ip == 0 { return "no ip" }
+    let a = (ip >> 24) & 0xFF; let b = (ip >> 16) & 0xFF; let c = (ip >> 8) & 0xFF; let d = ip & 0xFF
+    return "{a}.{b}.{c}.{d}"
+}

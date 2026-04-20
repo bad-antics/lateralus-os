@@ -1,0 +1,73 @@
+
+[BOOT] LateralusOS bootstrap starting...
+[BOOT] Framebuffer detected: 1024x768
+[BOOT] fb_addr=0x00000000fd000000
+[BOOT] Multiboot info parsed
+[BOOT] boot_cmd=[gui=auto]
+[BOOT] fb_available=YES
+[BOOT] Validating framebuffer parameters...
+[BOOT] Framebuffer validation: PASS
+[BOOT] Jumping to kernel_main()...
+[kernel] LateralusOS kernel_main() entered
+[cpu] x86_64 long mode active
+[IDT] Initialized with exception handlers + IRQ 0/1/12
+[idt] IDT loaded, PIC remapped
+[memory] 4 GB identity-mapped, heap active
+[timer] PIT configured @ 1000 Hz
+[keyboard] PS/2 ready
+[vga] 80x25 text mode
+[framebuf] Framebuffer available
+[mouse] PS/2 mouse ready
+[ata] Initializing ATA PIO driver...
+[ata] No ATA drives detected
+[vfs] initialized
+[syscall] table initialized, 23 handlers
+[fs] ramfs + procfs + devfs initialized
+[net] No supported network adapter found
+[ip] IPv4/ARP/UDP/ICMP stack initialized
+[dns] resolver initialized
+[tcp] TCP transport initialized (8 slots, 4096B rx buffer)
+[http] HTTP/1.1 client initialized
+[ipc] initialized, 16 queue slots
+[sched] initialized, idle task (tid 0) running
+[sched] created 'netpoll' tid=1 prio=2
+[init] Boot sequence complete
+[init] gui=auto detected — launching desktop
+[gui] Launching desktop environment...
+[gui] Phase 1: Framebuffer init
+[FB] fb_init: initializing framebuffer...
+[FB] fb_init: addr=0x00000000FD000000
+[FB] fb_init: width=1024
+[FB] fb_init: height=768
+[FB] fb_init: pitch=4096
+[FB] fb_init: bpp=32
+[FB] fb_init: buf_size=3145728
+[FB] self-test: starting...
+[FB] self-test: PASS
+[FB] fb_init: complete
+[gui] Phase 2: Double buffer allocation
+[gui] Requesting 3145728 bytes for backbuf
+[FB] fb_enable_double_buffer: backbuf=0x00000000002C1020
+[FB] fb_enable_double_buffer: enabled OK
+[gui] Double-buffer enabled successfully
+[FB] === Framebuffer Diagnostics ===
+[FB]   hw_addr=0x00000000FD000000
+[FB]   backbuf=0x00000000002C1020
+[FB]   render_addr=0x00000000002C1020
+[FB]   width=1024
+[FB]   height=768
+[FB]   pitch=4096
+[FB]   bpp=32
+[FB]   double_buf=1
+[FB]   available=1
+[FB]   buf_size=3145728
+[FB]   swap_count=0
+[FB]   fault_count=0
+[FB] ===============================
+[gui] Phase 3: Task scheduler init
+[gui] Phase 4: Mouse init
+[gui] Phase 5: Desktop init
+[gui] Phase 6: Boot chime
+[gui] Phase 7: Initial render
+[gui] Initial render complete
+[gui] ═══ Desktop running. GUI event loop active. ═══

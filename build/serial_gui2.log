@@ -1,0 +1,42 @@
+
+[BOOT] LateralusOS bootstrap starting...
+[BOOT] Framebuffer detected: 1024x768
+[BOOT] fb_addr=0x00000000fd000000
+[BOOT] Multiboot info parsed
+[BOOT] boot_cmd=[gui=auto]
+[BOOT] fb_available=YES
+[BOOT] Jumping to kernel_main()...
+[kernel] LateralusOS kernel_main() entered
+[cpu] x86_64 long mode active
+[idt] IDT loaded, PIC remapped
+[memory] 4 GB identity-mapped, heap active
+[timer] PIT configured @ 1000 Hz
+[keyboard] PS/2 ready
+[vga] 80x25 text mode
+[framebuf] Framebuffer available
+[mouse] PS/2 mouse ready
+[ata] Initializing ATA PIO driver...
+[ata] No ATA drives detected
+[vfs] initialized
+[syscall] table initialized, 23 handlers
+[fs] ramfs + procfs + devfs initialized
+[net] No supported network adapter found
+[ip] IPv4/ARP/UDP/ICMP stack initialized
+[dns] resolver initialized
+[tcp] TCP transport initialized (8 slots, 4096B rx buffer)
+[http] HTTP/1.1 client initialized
+[ipc] initialized, 16 queue slots
+[sched] initialized, idle task (tid 0) running
+[sched] created 'netpoll' tid=1 prio=2
+[init] Boot sequence complete
+[init] gui=auto detected — launching desktop
+[gui] Launching desktop environment...
+[gui] Framebuffer initialized (double-buffered, RAM backbuf)
+[gui] Task scheduler initialized
+[gui] Mouse initialized
+[gui] Desktop initialized
+[gui] Initial render complete
+[gui] Desktop running. GUI event loop active.
+[mouse] event received
+[mouse] event received
+[mouse] event received

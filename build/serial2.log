@@ -1,0 +1,27 @@
+
+[BOOT] LateralusOS bootstrap starting...
+[BOOT] Framebuffer detected: 1024x768
+[BOOT] Multiboot info parsed
+[BOOT] boot_cmd=[gui=auto]
+[BOOT] fb_available=YES
+[BOOT] Jumping to kernel_main()...
+[kernel] LateralusOS kernel_main() entered
+[cpu] x86_64 long mode active
+[idt] IDT loaded, PIC remapped
+[memory] 1 GB identity-mapped, heap active
+[timer] PIT configured @ 1000 Hz
+[keyboard] PS/2 ready
+[vga] 80x25 text mode
+[framebuf] Framebuffer available
+[mouse] PS/2 mouse ready
+[syscall] table initialized (stub)
+[ipc] initialized (stub)
+[scheduler] initialized (stub)
+[init] Boot sequence complete
+[init] gui=auto detected — launching desktop
+[gui] Launching desktop environment...
+[gui] Framebuffer initialized (direct mode, no double-buffer)
+[gui] RAM filesystem initialized
+[gui] Task scheduler initialized
+[gui] Mouse initialized
+[gui] Desktop initialized
